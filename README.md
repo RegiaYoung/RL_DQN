@@ -1,6 +1,6 @@
 # Mid-term Assignment : Breakout game
 
-20337143杨锐佳 & 20337168 巴一凡
+20337143 杨锐佳 中山大学 计算机科学与技术
 
 **[sb981335043/RL_DQN (github.com)](https://github.com/sb981335043/RL_DQN)  GITHUB repository**
 
@@ -8,7 +8,7 @@
 
 ### A Breakout game
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221127110632696.png" alt="image-20221127110632696" style="zoom: 33%;" />
+<img src="./pic/image-20221127110632696.png" alt="image-20221127110632696" style="zoom: 33%;" />
 
 In a Breakout game:
 
@@ -53,7 +53,7 @@ Explain your work and exhibit the performance gain (or explain why things won’
 
 ### Baseline
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221128083633121.png" alt="image-20221128083633121" style="zoom:33%;" />
+<img src="./pic/image-20221128083633121.png" alt="image-20221128083633121" style="zoom:33%;" />
 
 Q-learning is a very important off-policy learning method in reinforcement learning, which uses Q-Table to store the value of each state action pair, while it is not practical to use Q-Table when the state and action space is high-dimensional or continuous.
 
@@ -83,7 +83,7 @@ Therefore, the final loss function in DQN is as follows:
 
 In the above equation, θ denotes the parameters of eval-net, while θ across denotes the parameters of target-net. In practical applications, the parameters of target-net are copied from eval-net at regular intervals.
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221128083913175.png" alt="image-20221128083913175" style="zoom: 33%;" />
+<img src="./pic/image-20221128083913175.png" alt="image-20221128083913175" style="zoom: 33%;" />
 
 ### Priority Experience Reply
 
@@ -95,7 +95,7 @@ With TD-error, we have a priority p, but how do we sample efficiently according 
 
 SumTree is a tree structure, the leaf node stores the priority p of each sample, each branch node has only two forks, and the value of the node is the sum of the two forks, so the top of SumTree is the sum of all p. As shown in the figure below: the bottom layer of leaves stores the p of samples, the leftmost 13 = 3 + 10 in the upper layer of leaves, and the root of the top layer is the sum of all p according to this rule.
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130114659189.png" alt="image-20221130114659189" style="zoom: 25%;" />
+<img src="./pic/image-20221130114659189.png" alt="image-20221130114659189" style="zoom: 25%;" />
 
 When sampling, we divide the sum of p by the batch size into as many intervals as the batch size, (n=sum(p)/batch_size). If we add up the priority of all nodes to 42, then if we draw 6 samples, the priority of the interval at that time may be like this:
 
@@ -141,7 +141,7 @@ The algorithm process of DDQN algorithm and Nature DQN is exactly the same excep
 
 　　　　　　f) Sampling m samples {ϕ(Sj),Aj,Rj,ϕ(S′j),is_endj},ϕ=1,2,,,m from the empirical playback set D, the current target Q value yj is calculated.
 
-<img src="D:\本学期课程\强化学习\Mid\26f0b766cbaf43e115e88dca437c5c5.png" alt="26f0b766cbaf43e115e88dca437c5c5" style="zoom: 80%;" />
+<img src="./pic/26f0b766cbaf43e115e88dca437c5c5.png" alt="26f0b766cbaf43e115e88dca437c5c5" style="zoom: 80%;" />
 
 　　　　　　g) All parameters of the Q network are updated using the mean squared loss function by back propagation of the gradient of the neural network w
 
@@ -380,24 +380,24 @@ class SumTree:
 
 ### Baseline
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221128005400005.png" alt="image-20221128005400005" style="zoom:50%;" />
+<img src="./pic/image-20221128005400005.png" alt="image-20221128005400005" style="zoom:50%;" />
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221128082837876.png" alt="image-20221128082837876" style="zoom:50%;" />
+<img src="./pic/image-20221128082837876.png" alt="image-20221128082837876" style="zoom:50%;" />
 
 - 预设参数情况下，Baseline需要大约35小时才能训练完50000000次
 - 而大约在到两千万次即得出200个模型后，模型的结果就较为收敛了
 - 会在400分值上下波动
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130212942783.png" alt="image-20221130212942783" style="zoom: 33%;" />
+<img src="./pic/image-20221130212942783.png" alt="image-20221130212942783" style="zoom: 33%;" />
 
 ### PER DQN
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130220237066.png" alt="image-20221130220237066" style="zoom:50%;" />
+<img src="./pic/image-20221130220237066.png" alt="image-20221130220237066" style="zoom:50%;" />
 
 - 预设参数情况下，Per需要大约20小时才能训练完50000000次
 - 对比于Baseline确实提高了训练速度
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130214935199.png" alt="image-20221130214935199" style="zoom:33%;" />
+<img src="./pic/image-20221130214935199.png" alt="image-20221130214935199" style="zoom:33%;" />
 
 ### Double DQN
 
@@ -405,14 +405,14 @@ class SumTree:
 - 会有的模型得到较好的分值，除了特殊结果（1k分以上的、陷入死循环）经常会有比较高的分值出现
 - 但训练效果波动较大，且效果和baseline和dueling相似，收敛速度也无明显提升
 
-<img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130221753909.png" alt="image-20221130221753909" style="zoom: 33%;" />
+<img src="./pic/image-20221130221753909.png" alt="image-20221130221753909" style="zoom: 33%;" />
 
 ### Dueling DQN
 
 - 预设参数情况下，Dueling需要大约50小时才能训练完50000000次
 - 会有的模型得到较好的分值，除了特殊结果（1k分以上的、陷入死循环）经常会有比较高的分值出现
 - 但收敛较快，在15000000次即150次后就可以得到较好的结果
-- <img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130232919783.png" alt="image-20221130232919783" style="zoom:33%;" />
+- <img src="./pic/image-20221130232919783.png" alt="image-20221130232919783" style="zoom:33%;" />
 
 ## Result
 
@@ -420,25 +420,25 @@ class SumTree:
 
 - 最终较稳定的模型得分为 412分
 - 抖动和Double类似
-- <img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130235432146.png" alt="image-20221130235432146" style="zoom:33%;" />
+- <img src="./pic/image-20221130235432146.png" alt="image-20221130235432146" style="zoom:33%;" />
 
 #### PER DQN
 
 - 最终较稳定的模型得分为 424分，但训练过程中的reward较低
 - 抖动相对于其他模型没那么严重，但是游戏最后出现一动不动的呆滞状态
-- <img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130220821353.png" alt="image-20221130220821353" style="zoom: 25%;" />
+- <img src="./pic/image-20221130220821353.png" alt="image-20221130220821353" style="zoom: 25%;" />
 
 #### Double DQN
 
 - 最终较稳定的模型得分为 425分，训练时的reward
 - 抖动较为严重
-- <img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130221330641.png" alt="image-20221130221330641" style="zoom: 15%;" />
+- <img src="./pic/image-20221130221330641.png" alt="image-20221130221330641" style="zoom: 15%;" />
 
 #### Dueling DQN
 
 - 最终较稳定的模型得分为 431分，训练时的reward
 - Dueling的结果会比较好，这只是一个平均结果，最佳结果能到七八百分
-- <img src="C:\Users\Okabe\AppData\Roaming\Typora\typora-user-images\image-20221130233923078.png" alt="image-20221130233923078" style="zoom:33%;" />
+- <img src="./pic/image-20221130233923078.png" alt="image-20221130233923078" style="zoom:33%;" />
 
 #### Summary
 
