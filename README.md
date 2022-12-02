@@ -79,7 +79,9 @@ We can explain question 4 once again.According to the above idea, we need the ne
 
 Therefore, the final loss function in DQN is as follows:
 
-<img src="https:////upload-images.jianshu.io/upload_images/4155986-895b1036a109e9a3.png?imageMogr2/auto-orient/strip|imageView2/2/w/507/format/webp" alt="img" style="zoom:67%;" />
+<img src="./pic/4155986-895b1036a109e9a3.webp" alt="4155986-895b1036a109e9a3" style="zoom:80%;" />
+
+
 
 In the above equation, θ denotes the parameters of eval-net, while θ across denotes the parameters of target-net. In practical applications, the parameters of target-net are copied from eval-net at regular intervals.
 
@@ -109,7 +111,7 @@ In the original DQN, there may be cases where the Q estimate is higher because w
 
 In order to decouple action selection and value estimation, we have the **Double-DQN** method. In Double-DQN, in calculating the actual value of Q, the action selection is obtained from eval-net, and the value estimation is obtained from target-net. At this point, the loss function becomes.
 
-<img src="https:////upload-images.jianshu.io/upload_images/4155986-a019692f5423c60f.png?imageMogr2/auto-orient/strip|imageView2/2/w/633/format/webp" alt="img" style="zoom:67%;" />
+<img src="./pic/4155986-a019692f5423c60f.webp" alt="4155986-a019692f5423c60f" style="zoom:67%;" />
 
 Since Double Q-learning requires the construction of two action value functions, one for estimating the action and another for estimating the value of that action. Considering that two networks, evaluation network and target network, are already available in the DQN algorithm, the DDQN algorithm only needs to use the evaluation network to determine the action and the target network to determine the action value when estimating the return, without constructing a new network separately. Therefore, we only need to change the method of calculating the target value in the DQN algorithm as follows:
 
@@ -171,7 +173,7 @@ Is it possible to simply use Q = V + A? Of course not, because for a definite Q,
 
 Therefore, our formula for calculating Q is as follows.
 
-<img src="https:////upload-images.jianshu.io/upload_images/4155986-5915f52a1e2edee5.png?imageMogr2/auto-orient/strip|imageView2/2/w/628/format/webp" alt="img" style="zoom:67%;" />
+<img src="./pic/4155986-5915f52a1e2edee5.webp" alt="4155986-5915f52a1e2edee5" style="zoom:80%;" />
 
 ## Implementation
 
