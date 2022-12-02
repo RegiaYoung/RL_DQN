@@ -67,9 +67,9 @@ However, the combination of deep neural networks and reinforcement learning idea
 
 To solve Problem 1, we have to use the Bellman equation.
 
-<img src="https:////upload-images.jianshu.io/upload_images/4155986-028672d13b543efe.png?imageMogr2/auto-orient/strip|imageView2/2/w/898/format/webp" alt="img" style="zoom: 50%;" />
+<img src="./pic/4155986-028672d13b543efe.webp" alt="4155986-028672d13b543efe" style="zoom:67%;" />
 
-<img src="https:////upload-images.jianshu.io/upload_images/4155986-87ba743fc416fe99.png?imageMogr2/auto-orient/strip|imageView2/2/w/620/format/webp" alt="img" style="zoom: 50%;" />
+<img src="./pic/4155986-87ba743fc416fe99.webp" alt="4155986-87ba743fc416fe99" style="zoom:67%;" />
 
 The two equations above, the first is the Bellman expectation equation and the second is the Bellman optimality equation. In our actual problems, for one state, a specific action is taken and the next state is essentially determined，So we can remove the summation from the optimal equation. In this way,we can get a prediction of the Q value by the neural network，and a target value of Q is obtained by Bellman's optimal equation, and supervised learning is performed by the gap between the predicted value and the target value.
 
